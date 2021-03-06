@@ -1,7 +1,8 @@
-from easygraphics import *
+from ui import Canvas
 
 def main():
-    pass
+    canvas = Canvas()
+    canvas.run()
 
 
 if __name__ == '__main__':
