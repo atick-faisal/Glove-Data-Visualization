@@ -1,5 +1,7 @@
 from easygraphics import rgb
 
+# ------------------- Constants ----------------- #
+
 ALPHA = 200
 
 COLORS = [

@@ -8,6 +8,7 @@ class SerialData:
     def __init__(self):
         pass
 
+    # ------------------------ Auto Detect Port --------------------------- #
     @staticmethod
     def port_auto_detect():
 
@@ -22,6 +23,7 @@ class SerialData:
             warnings.warn('Multiple Device found - using the first')
         return ports[0]
 
+    # ------------------------ Get Serial Port --------------------------- #
     def get_serial_port(self):
         port = self.port_auto_detect()
         # port = '/dev/ttyUSB0'
