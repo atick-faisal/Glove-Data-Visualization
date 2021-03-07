@@ -3,9 +3,9 @@ from comm import SerialData
 
 
 def main():
-    ser = SerialData().get_serial_port()
-    canvas = Canvas(ser)
-    canvas.run()
+    serial_port = SerialData().get_serial_port()
+    ui = Canvas(data_source=serial_port)
+    ui.run()
 
 
 if __name__ == '__main__':

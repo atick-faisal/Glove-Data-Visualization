@@ -1,6 +1,6 @@
 from easygraphics import rgb
 
-ALPHA = 100
+ALPHA = 200
 
 COLORS = [
     rgb(179, 157, 219, ALPHA),
