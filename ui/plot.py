@@ -12,9 +12,13 @@ class Plot:
 
     @staticmethod
     def get_mapped_y(y, max_y):
+        scaled_y = []
         mapped_y = []
         for i in range(len(y)):
-            mapped_y.append((y[i] / max(y)) * max_y)
+            scaled_y.append(y[i] - min(y) + 50)
+
+        for i in range(len(y)):
+            mapped_y.append((scaled_y[i] / max(scaled_y)) * max_y)
 
         return mapped_y
 

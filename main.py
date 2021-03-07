@@ -1,7 +1,10 @@
 from ui import Canvas
+from comm import SerialData
+
 
 def main():
-    canvas = Canvas()
+    ser = SerialData().get_serial_port()
+    canvas = Canvas(ser)
     canvas.run()
 
 
