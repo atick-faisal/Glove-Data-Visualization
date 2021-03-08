@@ -2,7 +2,7 @@ import numpy as np
 
 
 # --------------------- Rotation Matrix --------------------- #
-def get_rotation_matrix(w, x, y, z):
+def __get_rotation_matrix(w, x, y, z):
     rotation_matrix = np.zeros((9,))
 
     rotation_matrix[0] = 1 - 2 * (y ** 2 + z ** 2)
@@ -22,7 +22,7 @@ def get_rotation_matrix(w, x, y, z):
 
 # --------------------- Rotation Angles ------------------- #
 def get_rotation_angles(w, x, y, z):
-    rm = get_rotation_matrix(w, x, y, z)
+    rm = __get_rotation_matrix(w, x, y, z)
     yaw = np.arctan(rm[3] / rm[0])
     pitch = np.arctan(-rm[6] / np.sqrt(rm[7] ** 2 + rm[8] ** 2))
     roll = np.arctan(rm[7] / rm[8])

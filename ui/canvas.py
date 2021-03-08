@@ -1,12 +1,11 @@
 from easygraphics import *
 from .plot import Plot
-from comm import SerialManager
 
 
 class Canvas:
 
     def __init__(self, size=(900, 600), background=(52, 52, 59)):
-        self.serial_manager = SerialManager()
+        self.serial_data = None
         # ------------------- Flex and MPU Plots --------------------------- #
         self.flex_plot = Plot(x=120, y=100, width=300, height=300)
         self.rotation_plot = Plot(x=500, y=100, width=300, height=300)
@@ -54,6 +53,9 @@ class Canvas:
         set_fill_style(FillStyle.SOLID_FILL)
         draw_rect_text(x, y, 300, 100, label, flags=TextFlags.ALIGN_CENTER)
 
+    def add_serial_data_source(self, serial_data):
+        self.serial_data = serial_data
+
     @staticmethod
     def __on_receive_serial_data(canvas, calibration_data, serial_data):
         canvas.__apply_background()
@@ -67,7 +69,8 @@ class Canvas:
     # ------------------------- Draw Loop ------------------------- #
     def __loop(self):
         while is_run():
-            self.serial_manager.process_serial_data(self, self.__on_receive_serial_data)
+            if self.serial_data is not None:
+                self.serial_data.process_serial_data(self, self.__on_receive_serial_data)
 
     # ------------------------------ Run ---------------------------- #
     def run(self):

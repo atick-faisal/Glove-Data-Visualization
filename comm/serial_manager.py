@@ -2,15 +2,9 @@ import serial
 import warnings
 import serial.tools.list_ports
 from time import sleep
-from util import util
-import numpy as np
 
 
 class SerialManager:
-    def __init__(self):
-        self.data_source = SerialManager.__get_serial_port()
-        self.calibration_data = util.get_calibration_data(self.data_source)
-
     # ------------------------ Auto Detect Port --------------------------- #
     @staticmethod
     def __auto_detect_port():
@@ -28,7 +22,7 @@ class SerialManager:
 
     # ------------------------ Get Serial Port --------------------------- #
     @staticmethod
-    def __get_serial_port():
+    def get_serial_port():
         port = SerialManager.__auto_detect_port()
         # port = '/dev/ttyUSB0'
         ser = serial.Serial(port=port,
@@ -47,14 +41,3 @@ class SerialManager:
         sleep(1)
 
         return ser
-
-    def process_serial_data(self, canvas, callback):
-        try:
-            values = self.data_source.readline().decode('utf-8').rstrip().split(',')
-            values = np.array(list(map(float, values)))
-            callback(canvas, self.calibration_data, values)
-
-        except ValueError:
-            pass
-        except KeyboardInterrupt:
-            exit(0)
