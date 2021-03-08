@@ -1,1 +1,1 @@
-from .serial_data import SerialData
+from .serial_data import SerialManager
