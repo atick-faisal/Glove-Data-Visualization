@@ -6,6 +6,7 @@ class SerialData:
         self.data_source = data_source
         self.calibration_data = calibration_data
 
+    # ----------------- Process Serial Data ------------------- #
     def process_serial_data(self, canvas, callback):
         try:
             values = self.data_source.readline().decode('utf-8').rstrip().split(',')

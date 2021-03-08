@@ -53,9 +53,11 @@ class Canvas:
         set_fill_style(FillStyle.SOLID_FILL)
         draw_rect_text(x, y, 300, 100, label, flags=TextFlags.ALIGN_CENTER)
 
+    # ---------------------- Add Serial Data to UI ---------------------- #
     def add_serial_data_source(self, serial_data):
         self.serial_data = serial_data
 
+    # ----------------------- Serial Data Callback --------------------- #
     @staticmethod
     def __on_receive_serial_data(canvas, calibration_data, serial_data):
         canvas.__apply_background()
